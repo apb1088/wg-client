@@ -1,9 +1,9 @@
 
 
-const name = "student";
+const name = "ChatGPT";
 const game = "auto-" + name + "-" + randomInt(1000);
 
-const alphabet = new Set("abcdefghijklmnopqrstuvwxyz".split(''));
+const alphabet = new Set("tnrslcdmpbhfgvkwyzxjaeiou".split(''));
 
 require('core-js/actual');
 let { Socket } = require('phoenix-channels');
@@ -17,6 +17,11 @@ const fs = require('node:fs');
 const zlib = require('zlib');
 let words = zlib.gunzipSync(fs.readFileSync('words.txt.gz')).toString('utf-8').split("\n");
 
+// picking most common letters in order
+
+// RSTLN first
+// Following Consanants
+// Vowels last
 function randomInt(xx) {
   return Math.floor(xx * Math.random());
 }
@@ -66,7 +71,7 @@ function onView(view) {
     }
   }
 
-  let ch = randomPick(moves);
+  let ch = moves [0];
   console.log("guess:", ch);
 
   if (moves.length > 0 && puzzle.includes('-')) {
